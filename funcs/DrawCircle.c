@@ -5,7 +5,7 @@
  * Draw Circle use Bresenham Algo, 
  * Fill Circle use X-ray screen.
  */
-void drawCircle(int x, int y, int radius, int flag) {
+void drawCircle(SDL_Renderer* renderer, int x, int y, int radius, int flag) {
     int d = 1 - radius;
     int coordinate_x = 0;
     int coordinate_y = radius;
@@ -28,9 +28,9 @@ void drawCircle(int x, int y, int radius, int flag) {
 
         if (flag == 1) {
             for (lineCount = 0; lineCount < 2; ++lineCount) {
-                SDL_RenderDrawLine(render, pixelReflect[lineCount].x, pixelReflect[lineCount].y, \
+                SDL_RenderDrawLine(renderer, pixelReflect[lineCount].x, pixelReflect[lineCount].y, \
                 pixelReflect[lineCount + 2].x, pixelReflect[lineCount + 2].y);
-                SDL_RenderDrawLine(render, pixelReflect[lineCount + 4].x, pixelReflect[lineCount + 4].y, \
+                SDL_RenderDrawLine(renderer, pixelReflect[lineCount + 4].x, pixelReflect[lineCount + 4].y, \
                 pixelReflect[lineCount + 6].x, pixelReflect[lineCount + 6].y);
             }
         }
