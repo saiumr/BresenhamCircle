@@ -1,3 +1,4 @@
+#include "init.h"
 
 /**
  * \brief Draw a circle filled or not.
