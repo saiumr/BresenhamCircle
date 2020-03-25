@@ -9,10 +9,11 @@ int main(int argc, const char** argv) {
         printf("SYSTEM INIT FAILED!\n");
     }
     else {
-        drawFlower();
+        // drawFlower();
+        drawSpace(10);
+        drawRects(Rects, RectsSubPos);
         eventLoop();
     }
 
     return 0;
 }
-

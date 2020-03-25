@@ -26,3 +26,25 @@ bool init() {
     }
     return success;
 }
+
+SubPos initRectsTable(int sideLength, int rowCraft, int columnCraft, int gap) {
+    int i;
+    int j;
+    SubPos a = {rowCraft, columnCraft};
+
+    // row
+    Rects = (SDL_Rect**)malloc(rowCraft * sizeof(SDL_Rect));
+
+    for (i = 0; i < rowCraft; ++i) {
+        // column
+        Rects[i] = (SDL_Rect*)malloc(columnCraft * sizeof(SDL_Rect));
+        for (j = 0; j < columnCraft; ++j) {
+            Rects[i][j].h = sideLength - gap;
+            Rects[i][j].w = sideLength - gap;
+            Rects[i][j].x = sideLength * (j + 1) + gap;
+            Rects[i][j].y = sideLength * (i + 1) + gap;
+        }
+    }
+
+    return a;
+}

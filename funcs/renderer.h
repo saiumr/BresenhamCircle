@@ -1,1 +1,4 @@
-// TODO fixed texture from pen.
+#include "init.h"
+
+SDL_Texture* fixedSpace();
+
