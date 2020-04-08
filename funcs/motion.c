@@ -22,7 +22,8 @@ void drawSpace(int Granules) {
     int trueWlength = 0;
     int trueHlength = 0;
 
-    for (i = 1; trueWlength < lineWidthLen; ++i) {
+    // added side window
+    for (i = 1; trueWlength + _SIDE_WINDOW < lineWidthLen; ++i) {
         trueWlength = i * Granules;
     }
 
@@ -38,8 +39,9 @@ void drawSpace(int Granules) {
     for (line = 0; line < i; ++line) {
         SDL_RenderDrawLine(render, (line + 1) * Granules, Granules, (line + 1) * Granules, trueHlength);
     }
+    SDL_SetRenderDrawColor(render, 0, 0, 0, 255);
 
-    RectsSubPos = initRectsTable(Granules, j - 2, i - 2, _GAP);
+    initRectsTable(Granules, j - 2, i - 2, _GAP);
 }
 
 void drawRects(SDL_Rect** table, SubPos tableSub) {
@@ -48,4 +50,5 @@ void drawRects(SDL_Rect** table, SubPos tableSub) {
     for (i = 0; i < tableSub.row; ++i) {
         SDL_RenderFillRects(render, table[i], tableSub.column);
     }
+    SDL_SetRenderDrawColor(render, 0, 0, 0, 255);
 }

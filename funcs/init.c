@@ -21,30 +21,36 @@ bool init() {
                 success = false;
             }
             SDL_SetRenderDrawBlendMode(render, SDL_BLENDMODE_BLEND);
-            SDL_SetRenderDrawColor(render, 0, 255, 0, 255);
+            SDL_SetRenderDrawColor(render, 0, 0, 0, 255);
         }
     }
     return success;
 }
 
-SubPos initRectsTable(int sideLength, int rowCraft, int columnCraft, int gap) {
+// once started initialized three tables "Rects" "RectsFilled" "TotalRectsSubPos" and malloced "RectsClickedStore"
+bool initRectsTable(int sideLength, int rowCraft, int columnCraft, int gap) {
     int i;
     int j;
-    SubPos a = {rowCraft, columnCraft};
+    TotalRectsSubPos.row = rowCraft;
+    TotalRectsSubPos.column = columnCraft;
 
     // row
-    Rects = (SDL_Rect**)malloc(rowCraft * sizeof(SDL_Rect));
+    Rects = (SDL_Rect**)malloc(rowCraft * sizeof(SDL_Rect*));
+    RectsFilled = (bool**)malloc(rowCraft * sizeof(bool*));
 
     for (i = 0; i < rowCraft; ++i) {
         // column
         Rects[i] = (SDL_Rect*)malloc(columnCraft * sizeof(SDL_Rect));
+        RectsFilled[i] = (bool*)malloc(columnCraft * sizeof(bool));
         for (j = 0; j < columnCraft; ++j) {
+            RectsFilled[i][j] = false;
             Rects[i][j].h = sideLength - gap;
             Rects[i][j].w = sideLength - gap;
             Rects[i][j].x = sideLength * (j + 1) + gap;
             Rects[i][j].y = sideLength * (i + 1) + gap;
         }
     }
+    RectsClickedStore = (SubPos*)malloc(rowCraft * columnCraft * sizeof(SubPos));
 
-    return a;
+    return true;
 }
