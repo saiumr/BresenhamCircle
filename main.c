@@ -17,23 +17,23 @@ int main(int argc, const char **argv)
         SDL_Texture *space;
 
         // Set Target
-        // space = fixedSpace(WINDOW_WIDTH, WINDOW_HEIGHT, SDL_PIXELFORMAT_RGBA8888);
-        // setTarget(space);
+        space = fixedSpace(WINDOW_WIDTH, WINDOW_HEIGHT, SDL_PIXELFORMAT_RGBA8888);
+        setTarget(space);
 
         // all paintings
         SDL_SetRenderDrawColor(render, 137, 255, 48, 255);
-        //drawSpace(granules);
+        drawSpace(granules);
 
         //---Computer Graphic Experiment Homework---//
         //******************************************//
         // drawCircle(render, 200, 200, 100, 1);
         // drawTriangle();
         // drawSideFilling();
-        TranslationTransformation(400, 0);
-        RotationTransformation(18);
-        positiveLeafLine();
+        // TranslationTransformation(400, 0);
+        // RotationTransformation(18);
+        // positiveLeafLine();
         // view texture space for graphic experiment
-        viewSpace(space);
+        // viewSpace(space);
         //******************************************//
 
         // ---------------------------------- //
@@ -41,10 +41,10 @@ int main(int argc, const char **argv)
         // ---------------------------------- //
 
         // Clear Target
-        //setTarget(NULL);
+        setTarget(NULL);
 
         // drawFlower();
-        //eventLoop(space, granules);
+        eventLoop(space, granules);
     }
 
     return 0;
